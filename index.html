@@ -297,11 +297,15 @@
     .offer-badge .big { font-size: 48px; }
     .vehicle-title .name { font-size: 28px; }
   }
-  @media print {
+  /* ======================================
+   PRINT STYLES – MAZDA ETA BROCHURE
+   Optimised for 1 or 2 A4 Pages
+====================================== */
+@media print {
 
   /* ==============================
-     PAGE SETUP – A4 PORTRAIT
-     ============================== */
+     PAGE SETUP
+  ============================== */
   @page {
     size: A4 portrait;
     margin: 10mm;
@@ -312,13 +316,14 @@
     color: #000000 !important;
   }
 
+  /* Master scaling control */
   body {
-    zoom: 0.82; /* Master scaling control (adjust between 0.75–0.90 if needed) */
+    zoom: 0.90; /* Default for 2 pages */
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
-  /* Reset dark theme elements */
+  /* Remove dark theme effects */
   * {
     background: transparent !important;
     color: #000000 !important;
@@ -329,21 +334,25 @@
 
   /* ==============================
      HIDE NON-ESSENTIAL ELEMENTS
-     ============================== */
-  .topbar,
+  ============================== */
   .cta-section,
-  .btn,
-  .footer {
+  .footer,
+  .topbar,
+  .btn {
     display: none !important;
   }
 
   /* ==============================
-     HEADER OPTIMISATION
-     ============================== */
+     HEADER STYLING
+  ============================== */
   .header {
     background: #ffffff !important;
     border-bottom: 2px solid #000000;
-    padding: 10px 0 !important;
+    padding: 12px 0 !important;
+  }
+
+  .header::before {
+    display: none !important;
   }
 
   .brand-text h1 {
@@ -353,25 +362,25 @@
 
   .brand-text .dealer,
   .brand-text .subtitle {
-    color: #000000 !important;
     font-size: 11px !important;
-  }
-
-  .offer-badge {
-    display: none !important;
+    color: #000000 !important;
   }
 
   .mazda-logo img {
     max-height: 50px !important;
   }
 
+  .offer-badge {
+    display: none !important;
+  }
+
   /* ==============================
      INTRO STRIP
-     ============================== */
+  ============================== */
   .intro-strip {
     background: #ffffff !important;
-    border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
     padding: 6px 0 !important;
   }
 
@@ -380,32 +389,36 @@
   }
 
   /* ==============================
-     GRID LAYOUT – TWO COLUMNS
-     ============================== */
+     GRID LAYOUT
+  ============================== */
   .grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr);
     gap: 6mm;
-    padding: 0;
     background: none !important;
+    padding: 0 !important;
   }
 
   /* ==============================
      CARD STYLING
-     ============================== */
+  ============================== */
   .card {
     background: #ffffff !important;
     border: 1px solid #cccccc;
-    page-break-inside: avoid;
     break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   /* ==============================
-     IMAGE RESIZING
-     ============================== */
+     IMAGE OPTIMISATION
+  ============================== */
   .vehicle-img {
-    padding-top: 36% !important; /* Reduced from 50% */
+    padding-top: 36% !important;
     background: #ffffff !important;
+  }
+
+  .vehicle-img::after {
+    display: none !important;
   }
 
   .vehicle-img img {
@@ -415,13 +428,9 @@
     filter: grayscale(100%);
   }
 
-  .vehicle-img::after {
-    display: none !important;
-  }
-
   /* ==============================
      BADGES & TITLES
-     ============================== */
+  ============================== */
   .save-badge {
     background: #ffffff !important;
     color: #000000 !important;
@@ -444,14 +453,13 @@
 
   /* ==============================
      CARD CONTENT
-     ============================== */
+  ============================== */
   .card-body {
     padding: 10px !important;
   }
 
   .items-label {
     font-size: 9px !important;
-    margin-bottom: 4px;
     border-bottom: 1px solid #cccccc;
   }
 
@@ -474,9 +482,9 @@
 
   /* ==============================
      PRICE SUMMARY
-     ============================== */
+  ============================== */
   .price-summary {
-    background: #f5f5f5 !important;
+    background: #f2f2f2 !important;
     border: 1px solid #000000;
     padding: 8px !important;
   }
@@ -504,19 +512,7 @@
     font-size: 14px !important;
     color: #000000 !important;
   }
-
-  /* ==============================
-     PAGE BREAK CONTROL
-     ============================== */
-  .card:nth-child(2n) {
-    page-break-after: auto;
-  }
-
-  .card:nth-child(4n) {
-    page-break-after: always; /* Ensures 2 pages total */
-  }
 }
-  }
 </style>
 </head>
 <body>
