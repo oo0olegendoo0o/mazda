@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mazda Accessories Packs</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C8102E;
+    --dark: #111;
+    --mid: #1e1e1e;
+    --light: #f5f5f0;
+    --gold: #D4A843;
+    --muted: #888;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    font-family: 'Barlow', sans-serif;
+    color: var(--light);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--red);
+    padding: 32px 48px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+  .header-left h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    line-height: 1;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+  .header-left p {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .header-right {
+    text-align: right;
+  }
+  .header-right .tagline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+  .header-right .sub {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* INTRO STRIP */
+  .intro-strip {
+    background: var(--gold);
+    padding: 10px 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .intro-strip span {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dark);
+  }
+  .dot { width: 6px; height: 6px; background: var(--dark); border-radius: 50%; }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    padding: 2px;
+    background: #000;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--mid);
+    padding: 28px 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.2s;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--red);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .model-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 1px;
+    color: #fff;
+  }
+  .save-badge {
+    background: var(--red);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+  .save-badge.gold {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  /* ITEMS */
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 20px;
+  }
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13.5px;
+  }
+  .item-name {
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+  }
+  .item-price {
+    color: rgba(255,255,255,0.55);
+    font-size: 12px;
+    font-weight: 400;
+  }
+  .total-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 4px;
+    text-decoration: line-through;
+  }
+
+  /* PACK PRICE BOX */
+  .pack-box {
+    background: rgba(200,16,46,0.12);
+    border: 1px solid rgba(200,16,46,0.3);
+    border-radius: 4px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .pack-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pack-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  .pack-saving {
+    font-size: 12px;
+    color: #6fcf97;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #0a0a0a;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--red);
+  }
+  .footer-note {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    color: var(--red);
+    letter-spacing: 2px;
+  }
+
+  @media print {
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>MAZDA</h1>
+    <p>Genuine Accessories Packs</p>
+  </div>
+  <div class="header-right">
+    <div class="tagline">Bundle &amp; Save</div>
+    <div class="sub">Exclusive Pack Pricing — Limited Offer</div>
+  </div>
+</div>
+
+<div class="intro-strip">
+  <span>Protect Your Investment</span>
+  <div class="dot"></div>
+  <span>Genuine Parts</span>
+  <div class="dot"></div>
+  <span>Save Up to 36%</span>
+  <div class="dot"></div>
+  <span>All Models Available</span>
+</div>
+
+<div class="grid">
+
+  <!-- MAZDA 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="model-name">MAZDA 2</div>
+      <div class="save-badge">SAVE 27%</div>
+    </div>
+    <div class="items">
+      <div class="item"><span class="item-name">Mats</span><span class="item-price">$195</span></div>
+      <div class="item"><span class="item-name">Slimline w/Shields</span><span class="item-price">$242</span></div>
+      <div class="item"><span class="item-name">Cargo Tray</span><span class="item-price">$173</span></div>
+      <div class="item"><span class="item-name">Audio Retractable USB Cable</span><span class="item-price">$22</span></div>
+      <div class="item"><span class="item-name">Welcome Illumination</span><span class="item-price">$313</span></div>
+    </div>
+    <div class="total-row">Total value: $945</div>
+    <div class="pack-box">
+      <div>
+        <div class="pack-label">Pack Price</div>
+        <div class="pack-saving">You save $250</div>
+      </div>
+      <div class="pack-price">$695</div>
+    </div>
+  </div>
+
+  <!-- CX-3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="model-name">CX-3</div>
+      <div class="save-badge gold">SAVE 21%</div>
+    </div>
+    <div class="items">
+      <div class="item"><span class="item-name">Mats</span><span class="item-price">$205</span></div>
+      <div class="item"><span class="item-name">Slimline w/Shields</span><span class="item-price">$262</span></div>
+      <div class="item"><span class="item-name">Front Seat Covers</span><span class="item-price">$177</span></div>
+      <div class="item"><span class="item-name">Cargo Tray</span><span class="item-price">$213</span></div>
+      <div class="item"><span class="item-name">Scuff Plates</span><span class="item-price">$355</span></div>
+      <div class="item"><span class="item-name">Bonnet Protector</span><span class="item-price">$285</span></div>
+    </div>
+    <div class="total-row">Total value: $1,497</div>
+    <div class="pack-box">
+      <div>
+        <div class="pack-label">Pack Price</div>
+        <div class="pack-saving">You save $302</div>
+      </div>
+      <div class="pack-price">$1,195</div>
+    </div>
+  </div>
+
+  <!-- CX-30 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="model-name">CX-30</div>
+      <div class="save-badge">SAVE 30%</div>
+    </div>
+    <div class="items">
+      <div class="item"><span class="item-name">Mats</span><span class="item-price">$235</span></div>
+      <div class="item"><span class="item-name">Front Seat Covers</span><span class="item-price">$217</span></div>
+      <div class="item"><span class="item-name">Cargo Tray</span><span class="item-price">$224</span></div>
+      <div class="item"><span class="item-name">Bonnet</span><span class="item-price">$264</span></div>
+      <div class="item"><span class="item-name">USB Cable</span><span class="item-price">$50</span></div>
+    </div>
+    <div class="total-row">Total value: $990</div>
+    <div class="pack-box">
+      <div>
+        <div class="pack-label">Pack Price</div>
+        <div class="pack-saving">You save $295</div>
+      </div>
+      <div class="pack-price">$695</div>
+    </div>
+  </div>
+
+  <!-- CX-5 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="model-name">CX-5</div>
+      <div class="save-badge">SAVE 36%</div>
+    </div>
+    <div class="items">
+      <div class="item"><span class="item-name">Mats</span><span class="item-price">$265</span></div>
+      <div class="item"><span class="item-name">Cargo Tray (Carpet)</span><span class="item-price">$355</span></div>
+      <div class="item"><span class="item-name">USB-C Cable</span><span class="item-price">$40</span></div>
+      <div class="item"><span class="item-name">Cargo Net</span><span class="item-price">$114</span></div>
+    </div>
+    <div class="total-row">Total value: $774</div>
+    <div class="pack-box">
+      <div>
+        <div class="pack-label">Pack Price</div>
+        <div class="pack-saving">You save $279</div>
+      </div>
+      <div class="pack-price">$495</div>
+    </div>
+  </div>
+
+  <!-- MAZDA 6E & CX-60 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="model-name">MAZDA 6E &amp; CX-60</div>
+      <div class="save-badge gold">SAVE 26%</div>
+    </div>
+    <div class="items">
+      <div class="item"><span class="item-name">Floor Mats</span><span class="item-price">$265</span></div>
+      <div class="item"><span class="item-name">Cargo Tray Carpet</span><span class="item-price">$355</span></div>
+      <div class="item"><span class="item-name">Travel Charge Cable</span><span class="item-price">$267</span></div>
+      <div class="item"><span class="item-name">USB Cable</span><span class="item-price">$50</span></div>
+    </div>
+    <div class="total-row">Total value: $937</div>
+    <div class="pack-box">
+      <div>
+        <div class="pack-label">Pack Price</div>
+        <div class="pack-saving">You save $242</div>
+      </div>
+      <div class="pack-price">$695</div>
+    </div>
+  </div>
+
+  <!-- MAZDA CX-60 & CX-70 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="model-name">CX-60 &amp; CX-70</div>
+      <div class="save-badge">SAVE 23%</div>
+    </div>
+    <div class="items">
+      <div class="item"><span class="item-name">Premium Floor Mats</span><span class="item-price">$270</span></div>
+      <div class="item"><span class="item-name">Cargo Mats</span><span class="item-price">$420</span></div>
+      <div class="item"><span class="item-name">Smoked Bonnet Protector</span><span class="item-price">$259</span></div>
+      <div class="item"><span class="item-name">Slimline w/Shields</span><span class="item-price">$283</span></div>
+      <div class="item"><span class="item-name">USB Cable</span><span class="item-price">$50</span></div>
+    </div>
+    <div class="total-row">Total value: $1,282</div>
+    <div class="pack-box">
+      <div>
+        <div class="pack-label">Pack Price</div>
+        <div class="pack-saving">You save $287</div>
+      </div>
+      <div class="pack-price">$995</div>
+    </div>
+  </div>
+
+  <!-- CX-80 & CX-90 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="model-name">CX-80 &amp; CX-90</div>
+      <div class="save-badge gold">SAVE 24%</div>
+    </div>
+    <div class="items">
+      <div class="item"><span class="item-name">Premium Floor Mats</span><span class="item-price">$290</span></div>
+      <div class="item"><span class="item-name">Welcome Illumination</span><span class="item-price">$304</span></div>
+      <div class="item"><span class="item-name">Slimline w/Shields</span><span class="item-price">$287</span></div>
+      <div class="item"><span class="item-name">Smoked Bonnet Protector</span><span class="item-price">$264</span></div>
+      <div class="item"><span class="item-name">USB Cable</span><span class="item-price">$50</span></div>
+      <div class="item"><span class="item-name">Cargo Net</span><span class="item-price">$114</span></div>
+    </div>
+    <div class="total-row">Total value: $1,309</div>
+    <div class="pack-box">
+      <div>
+        <div class="pack-label">Pack Price</div>
+        <div class="pack-saving">You save $314</div>
+      </div>
+      <div class="pack-price">$995</div>
+    </div>
+  </div>
+
+  <!-- BT-50 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="model-name">BT-50</div>
+      <div class="save-badge">SAVE 25%</div>
+    </div>
+    <div class="items">
+      <div class="item"><span class="item-name">Rubber/Carpet Mats</span><span class="item-price">$253</span></div>
+      <div class="item"><span class="item-name">Front Canvas Seat Covers</span><span class="item-price">$653</span></div>
+      <div class="item"><span class="item-name">Slimline w/Shields</span><span class="item-price">$323</span></div>
+      <div class="item"><span class="item-name">Bonnet Protector</span><span class="item-price">$230</span></div>
+      <div class="item"><span class="item-name">Wireless Charger</span><span class="item-price">$479</span></div>
+      <div class="item"><span class="item-name">USB Cable</span><span class="item-price">$50</span></div>
+    </div>
+    <div class="total-row">Total value: $1,988</div>
+    <div class="pack-box">
+      <div>
+        <div class="pack-label">Pack Price</div>
+        <div class="pack-saving">You save $493</div>
+      </div>
+      <div class="pack-price">$1,495</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-note">Prices are recommended retail. Pack pricing available at time of vehicle delivery. Subject to availability.</div>
+  <div class="footer-brand">MAZDA</div>
+</div>
+
+</body>
+</html>
