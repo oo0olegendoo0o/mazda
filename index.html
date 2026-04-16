@@ -298,10 +298,13 @@
     .vehicle-title .name { font-size: 28px; }
   }
   @media print {
-  /* Page Setup */
+
+  /* ==============================
+     PAGE SETUP – A4 PORTRAIT
+     ============================== */
   @page {
     size: A4 portrait;
-    margin: 15mm;
+    margin: 10mm;
   }
 
   html, body, .page {
@@ -309,6 +312,13 @@
     color: #000000 !important;
   }
 
+  body {
+    zoom: 0.82; /* Master scaling control (adjust between 0.75–0.90 if needed) */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Reset dark theme elements */
   * {
     background: transparent !important;
     color: #000000 !important;
@@ -317,204 +327,193 @@
     filter: none !important;
   }
 
-  /* Hide Non-Essential Elements */
+  /* ==============================
+     HIDE NON-ESSENTIAL ELEMENTS
+     ============================== */
+  .topbar,
   .cta-section,
   .btn,
-  .topbar {
+  .footer {
     display: none !important;
   }
 
-  /* Header Styling */
+  /* ==============================
+     HEADER OPTIMISATION
+     ============================== */
   .header {
     background: #ffffff !important;
     border-bottom: 2px solid #000000;
-    padding: 20px 0;
+    padding: 10px 0 !important;
   }
 
-  .brand-text h1,
+  .brand-text h1 {
+    font-size: 28px !important;
+    color: #000000 !important;
+  }
+
   .brand-text .dealer,
   .brand-text .subtitle {
     color: #000000 !important;
+    font-size: 11px !important;
   }
 
-  .offer-badge .big {
-    color: #000000 !important;
-    text-shadow: none !important;
+  .offer-badge {
+    display: none !important;
   }
 
-  /* Intro Strip */
+  .mazda-logo img {
+    max-height: 50px !important;
+  }
+
+  /* ==============================
+     INTRO STRIP
+     ============================== */
   .intro-strip {
     background: #ffffff !important;
     border-top: 1px solid #000000;
     border-bottom: 1px solid #000000;
+    padding: 6px 0 !important;
   }
 
-  /* Grid Layout */
+  .intro-strip .pill {
+    font-size: 9px !important;
+  }
+
+  /* ==============================
+     GRID LAYOUT – TWO COLUMNS
+     ============================== */
   .grid {
-    display: block !important;
-    gap: 0;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6mm;
+    padding: 0;
     background: none !important;
   }
 
+  /* ==============================
+     CARD STYLING
+     ============================== */
   .card {
-    border: 1px solid #cccccc;
-    margin-bottom: 12mm;
     background: #ffffff !important;
+    border: 1px solid #cccccc;
     page-break-inside: avoid;
+    break-inside: avoid;
   }
 
-  /* Images */
+  /* ==============================
+     IMAGE RESIZING
+     ============================== */
   .vehicle-img {
+    padding-top: 36% !important; /* Reduced from 50% */
     background: #ffffff !important;
+  }
+
+  .vehicle-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
   }
 
   .vehicle-img::after {
     display: none !important;
   }
 
-  .vehicle-img img {
-    filter: grayscale(100%);
-  }
-
-  /* Badges */
+  /* ==============================
+     BADGES & TITLES
+     ============================== */
   .save-badge {
     background: #ffffff !important;
     color: #000000 !important;
     border: 1px solid #000000;
     box-shadow: none;
+    transform: none;
+    padding: 4px 6px;
   }
 
-  /* Typography */
-  .vehicle-title .name,
-  .vehicle-title .kicker,
-  .items-label,
-  .item-name,
-  .item-price,
-  .pack-label,
-  .pack-price,
-  .rrp-value {
+  .vehicle-title .name {
+    font-size: 20px !important;
+    color: #000000 !important;
+    text-shadow: none;
+  }
+
+  .vehicle-title .kicker {
+    font-size: 9px !important;
     color: #000000 !important;
   }
 
-  /* Price Summary */
-  .price-summary {
-    background: #f5f5f5 !important;
-    border: 1px solid #000000;
-  }
-
-  .pack-price .cur {
-    color: #000000 !important;
-  }
-
-  /* Footer */
-  .footer {
-    background: #ffffff !important;
-    color: #000000 !important;
-    border-top: 1px solid #000000;
-  }
-
-  .contact-block a {
-    color: #000000 !important;
-    text-decoration: none;
-
-  @media print {
-
-  /* A4 Page Setup */
-  @page {
-    size: A4 portrait;
-    margin: 12mm;
-  }
-
-  body {
-    zoom: 0.85; /* Scales entire layout to fit two pages */
-  }
-
-  /* Convert layout to a compact two-column grid */
-  .grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8mm;
-    background: none !important;
-    padding: 0;
-  }
-
-  /* Prevent cards from breaking across pages */
-  .card {
-    page-break-inside: avoid;
-    break-inside: avoid;
-    margin-bottom: 6mm;
-    border: 1px solid #ccc;
-  }
-
-  /* Reduce image height */
-  .vehicle-img {
-    padding-top: 38% !important; /* Default is 50% */
-    background: #ffffff !important;
-  }
-
-  .vehicle-img img {
-    max-height: 85mm;
-    width: 100%;
-    object-fit: contain;
-  }
-
-  /* Remove decorative overlays */
-  .vehicle-img::after {
-    display: none !important;
-  }
-
-  /* Tighten spacing for compact layout */
+  /* ==============================
+     CARD CONTENT
+     ============================== */
   .card-body {
-    padding: 12px !important;
-  }
-
-  .items {
-    gap: 3px;
-    margin-bottom: 8px;
-  }
-
-  .item {
-    font-size: 11px;
-  }
-
-  .items-label {
-    font-size: 9px;
-    margin-bottom: 6px;
-  }
-
-  /* Reduce price section size */
-  .price-summary {
     padding: 10px !important;
   }
 
-  .pack-price {
-    font-size: 28px !important;
+  .items-label {
+    font-size: 9px !important;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  .items {
+    gap: 2px;
+    margin-bottom: 6px;
+  }
+
+  .item {
+    font-size: 10px !important;
+  }
+
+  .item-name::before {
+    color: #000000 !important;
+  }
+
+  .item-price {
+    font-size: 10px !important;
+  }
+
+  /* ==============================
+     PRICE SUMMARY
+     ============================== */
+  .price-summary {
+    background: #f5f5f5 !important;
+    border: 1px solid #000000;
+    padding: 8px !important;
+  }
+
+  .rrp-label,
+  .pack-label {
+    font-size: 9px !important;
   }
 
   .rrp-value {
+    font-size: 12px !important;
+  }
+
+  .pack-saving {
+    font-size: 10px !important;
+    color: #000000 !important;
+  }
+
+  .pack-price {
+    font-size: 24px !important;
+    color: #000000 !important;
+  }
+
+  .pack-price .cur {
     font-size: 14px !important;
+    color: #000000 !important;
   }
 
-  /* Reduce header footprint */
-  .header {
-    padding: 12px 0 !important;
+  /* ==============================
+     PAGE BREAK CONTROL
+     ============================== */
+  .card:nth-child(2n) {
+    page-break-after: auto;
   }
 
-  .brand-text h1 {
-    font-size: 32px !important;
-  }
-
-  .offer-badge .big {
-    font-size: 36px !important;
-  }
-
-  /* Hide non-essential sections */
-  .cta-section,
-  .footer,
-  .topbar {
-    display: none !important;
-  }
-}
+  .card:nth-child(4n) {
+    page-break-after: always; /* Ensures 2 pages total */
   }
 }
   }
