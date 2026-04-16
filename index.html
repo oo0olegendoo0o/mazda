@@ -416,6 +416,105 @@
   .contact-block a {
     color: #000000 !important;
     text-decoration: none;
+
+  @media print {
+
+  /* A4 Page Setup */
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  body {
+    zoom: 0.85; /* Scales entire layout to fit two pages */
+  }
+
+  /* Convert layout to a compact two-column grid */
+  .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8mm;
+    background: none !important;
+    padding: 0;
+  }
+
+  /* Prevent cards from breaking across pages */
+  .card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 6mm;
+    border: 1px solid #ccc;
+  }
+
+  /* Reduce image height */
+  .vehicle-img {
+    padding-top: 38% !important; /* Default is 50% */
+    background: #ffffff !important;
+  }
+
+  .vehicle-img img {
+    max-height: 85mm;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  /* Remove decorative overlays */
+  .vehicle-img::after {
+    display: none !important;
+  }
+
+  /* Tighten spacing for compact layout */
+  .card-body {
+    padding: 12px !important;
+  }
+
+  .items {
+    gap: 3px;
+    margin-bottom: 8px;
+  }
+
+  .item {
+    font-size: 11px;
+  }
+
+  .items-label {
+    font-size: 9px;
+    margin-bottom: 6px;
+  }
+
+  /* Reduce price section size */
+  .price-summary {
+    padding: 10px !important;
+  }
+
+  .pack-price {
+    font-size: 28px !important;
+  }
+
+  .rrp-value {
+    font-size: 14px !important;
+  }
+
+  /* Reduce header footprint */
+  .header {
+    padding: 12px 0 !important;
+  }
+
+  .brand-text h1 {
+    font-size: 32px !important;
+  }
+
+  .offer-badge .big {
+    font-size: 36px !important;
+  }
+
+  /* Hide non-essential sections */
+  .cta-section,
+  .footer,
+  .topbar {
+    display: none !important;
+  }
+}
   }
 }
   }
