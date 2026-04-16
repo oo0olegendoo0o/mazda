@@ -298,9 +298,126 @@
     .vehicle-title .name { font-size: 28px; }
   }
   @media print {
-    body, .page { background: #fff; }
-    .card { break-inside: avoid; page-break-inside: avoid; }
-    .cta-section, .btn { display: none; }
+  /* Page Setup */
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+
+  html, body, .page {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  * {
+    background: transparent !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  /* Hide Non-Essential Elements */
+  .cta-section,
+  .btn,
+  .topbar {
+    display: none !important;
+  }
+
+  /* Header Styling */
+  .header {
+    background: #ffffff !important;
+    border-bottom: 2px solid #000000;
+    padding: 20px 0;
+  }
+
+  .brand-text h1,
+  .brand-text .dealer,
+  .brand-text .subtitle {
+    color: #000000 !important;
+  }
+
+  .offer-badge .big {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+
+  /* Intro Strip */
+  .intro-strip {
+    background: #ffffff !important;
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+  }
+
+  /* Grid Layout */
+  .grid {
+    display: block !important;
+    gap: 0;
+    background: none !important;
+  }
+
+  .card {
+    border: 1px solid #cccccc;
+    margin-bottom: 12mm;
+    background: #ffffff !important;
+    page-break-inside: avoid;
+  }
+
+  /* Images */
+  .vehicle-img {
+    background: #ffffff !important;
+  }
+
+  .vehicle-img::after {
+    display: none !important;
+  }
+
+  .vehicle-img img {
+    filter: grayscale(100%);
+  }
+
+  /* Badges */
+  .save-badge {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #000000;
+    box-shadow: none;
+  }
+
+  /* Typography */
+  .vehicle-title .name,
+  .vehicle-title .kicker,
+  .items-label,
+  .item-name,
+  .item-price,
+  .pack-label,
+  .pack-price,
+  .rrp-value {
+    color: #000000 !important;
+  }
+
+  /* Price Summary */
+  .price-summary {
+    background: #f5f5f5 !important;
+    border: 1px solid #000000;
+  }
+
+  .pack-price .cur {
+    color: #000000 !important;
+  }
+
+  /* Footer */
+  .footer {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-top: 1px solid #000000;
+  }
+
+  .contact-block a {
+    color: #000000 !important;
+    text-decoration: none;
+  }
+}
   }
 </style>
 </head>
