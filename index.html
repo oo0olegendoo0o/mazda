@@ -30,7 +30,13 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  .page { max-width: 1400px; margin: 0 auto; background: var(--ink); }
+  .page {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    background: var(--ink);
+  }
+}
 
   /* TOP BAR */
   .topbar {
@@ -320,8 +326,9 @@
   @media print {
     body, .page { background: #fff; }
     .card { break-inside: avoid; page-break-inside: avoid; }
-    .cta-section, .btn { display: none; }
+    .cta-section, .btn { display: none;
   }
+}
 </style>
 </head>
 <body>
